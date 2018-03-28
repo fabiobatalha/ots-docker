@@ -36,9 +36,5 @@ services:
       - 80:80
     volumes:
       - ots-var:/project/ots/var
-      - ./config:/project/config
-      - ./entrypoint:/project/entrypoint
-      - ./config/httpd/conf.d:/etc/httpd/conf.d
-      - ./config/httpd/conf:/etc/httpd/conf
     command:
       - /project/entrypoint/processes_wrapper.sh
