@@ -1,7 +1,7 @@
 OTS Dockerized
 ==============
 
-This Dockerized OTS environment was built for tests and development purpouse, do not use it in production.
+This Dockerized OTS environment was built for tests and development purpose, do not use it in production.
 
 Requirements
 ------------
