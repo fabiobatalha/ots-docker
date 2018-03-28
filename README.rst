@@ -21,14 +21,16 @@ docker.compose up
 
 After start for the first time your docker compose environment, it is necessary to initialize the database.
 
-Initializing Database and Updating Databases
---------------------------------------------
+Initializing Database and Updating Database
+-------------------------------------------
 
-This command is necessary when updates are made in tha database model.
+This command is necessary when updates are made in the database model.
 
 After initialize the database, restart your docker compose environment for changes to take effect. 
 
-docker exec -it otsdocker_ots_1 bash -c 'cd ots ; vendor/doctrine/doctrine-module/bin/doctrine-module orm:schema-tool:update --force'
+update command::
+
+    docker exec -it otsdocker_ots_1 bash -c 'cd ots ; vendor/doctrine/doctrine-module/bin/doctrine-module orm:schema-tool:update --force'
 
 
 Configurations
