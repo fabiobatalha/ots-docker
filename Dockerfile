@@ -80,6 +80,7 @@ RUN git clone https://github.com/pkp/ots.git && \
 
 # CONFIG FILES
 RUN ln -s /project/config/ots/local.php ots/config/autoload/local.php && \
+    rm /etc/php.ini && \
     ln -s /project/config/php/php.ini /etc/php.ini
 
 # PERMISSIONS
