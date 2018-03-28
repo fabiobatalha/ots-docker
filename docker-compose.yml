@@ -1,0 +1,39 @@
+version: '2'
+
+volumes:
+  ots-var:
+  mysql-data:
+
+services:
+
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=xmlps
+      - MYSQL_DATABASE=xmlps
+      - MYSQL_USER=xmlps
+      - MYSQL_PASSWORD=xmlps
+      - MYSQL_ALLOW_EMPTY_PASSWORD=no
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  ots:
+    image: ots
+    restart: always
+    links:
+      - mysql
+    environment:
+      - APACHE_LOG_DIR=logs
+    ports:
+      - 80:80
+    volumes:
+      - ots-var:/project/ots/var
+      - ./config:/project/config
+      - ./entrypoint:/project/entrypoint
+      - ./config/httpd/conf.d:/etc/httpd/conf.d
+      - ./config/httpd/conf:/etc/httpd/conf
+    command:
+      - /project/entrypoint/processes_wrapper.sh
