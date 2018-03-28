@@ -21,12 +21,17 @@ services:
       - mysql-data:/var/lib/mysql
 
   ots:
-    image: ots
+    image: fabiobatalha/ots-docker
     restart: always
     links:
       - mysql
     environment:
       - APACHE_LOG_DIR=logs
+      - MYSQL_DATABASE=xmlps
+      - MYSQL_USER=xmlps
+      - MYSQL_PASSWORD=xmlps
+      - NOTIFICATION_EMAIL=mail@mail.com
+      - CROSSREF_EMAIL=mail@mail.com
     ports:
       - 80:80
     volumes:

@@ -3,26 +3,17 @@ OTS Dockerized
 
 This Dockerized OTS environment was built for tests and development purpose, do not use it in production.
 
-Requirements
-------------
-
-* Docker
-* Docker Compose
-
-Build
------
-
-docker built -t ots .
-
 Running
 -------
+
+See Docker Compose example at: https://github.com/fabiobatalha/ots-docker/blob/master/docker-compose.yml
 
 docker.compose up
 
 After start for the first time your docker compose environment, it is necessary to initialize the database.
 
-Initializing Database and Updating Database
--------------------------------------------
+Initializing and Updating Database
+----------------------------------
 
 This command is necessary when updates are made in the database model.
 
@@ -36,4 +27,32 @@ update command::
 Configurations
 --------------
 
-You may change the default username, password and database editing the files docker-compose.yml and config/ots/local.php.
+You may change the default username, password and database using the following environment variables.
+
+MYSQL_HOST
+
+    default value **mysql**
+
+MYSQL_POST
+
+    default value **3306**
+
+MYSQL_DATABASE
+
+    default value **xmlps**
+
+MYSQL_USER
+
+    default value **xmlps**
+
+MYSQL_PASSWORD
+
+    default value **xmlps**
+
+NOTIFICATION_EMAIL
+    
+    default value **email@email.com**
+
+CROSSREF_EMAIL
+
+    default value **email@email.com**

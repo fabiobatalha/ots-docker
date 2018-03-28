@@ -1,5 +1,13 @@
 <?php
 
+$NOTIFICATION_EMAIL = getenv('NOTIFICATION_EMAIL') ?: 'mail@mail.com';
+$CROSSREF_EMAIL = getenv('CROSSEREF_EMAIL') ?: $NOTIFICATION_EMAIL;
+$MYSQL_HOST = getenv('MYSQL_HOST') ?: 'mysql';
+$MYSQL_PORT = getenv('MYSQL_PORT') ?: '3306';
+$MYSQL_USER = getenv('MYSQL_USER') ?: 'xmlps'; 
+$MYSQL_PASSWORD = getenv('MYSQL_PASSWORD') ?: 'xmlps';
+$MYSQL_DATABASE = getenv('MYSQL_DATABASE') ?: 'xmlps';
+
 return array(
     'view_manager' => array(
         'display_not_found_reason' => true,
@@ -18,7 +26,7 @@ return array(
             'crossref_api' => array(
                 'endpoint' => 'https://search.crossref.org/dois',
                 'score_threshold' => 1,
-                'mailto' => 'email@email.org',
+                'mailto' => $CROSSREF_EMAIL,
              )
         ),
         'grobid' => array(
@@ -31,16 +39,17 @@ return array(
         ),
     ),
     'notification' => array(
-        'adminEmail' => 'email@email.org',
+        'adminEmail' => $NOTIFICATION_EMAIL,
     ),
     'doctrine' => array(
         'connection' => array(
             'orm_default' => array(
                 'params' => array(
-                    'host' => 'mysql',
-                    'user' => 'xmlps',
-                    'password' => 'xmlps',
-                    'database' => 'xmlps'
+                    'host' => $MYSQL_HOST,
+                    'user' => $MYSQL_USER,
+                    'password' => $MYSQL_PASSWORD,
+                    'dbname' => $MYSQL_DATABASE,
+                    'port' => $MYSQL_PORT
                 ),
             ),
         ),
