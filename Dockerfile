@@ -81,7 +81,11 @@ RUN git clone https://github.com/pkp/ots.git && \
 # CONFIG FILES
 RUN ln -s /project/config/ots/local.php ots/config/autoload/local.php && \
     rm /etc/php.ini && \
-    ln -s /project/config/php/php.ini /etc/php.ini
+    ln -s /project/config/php/php.ini /etc/php.ini && \
+    rm /etc/httpd/conf/httpd.conf && \
+    ln -s /project/config/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf && \
+    mkdir /etc/httpd/conf.d/vhosts && \
+    ln -s /project/config/httpd/conf.d/vhosts/ots.conf /etc/httpd/conf.d/vhosts/ots.conf
 
 # PERMISSIONS
 RUN chmod -v +x /project/entrypoint/processes_wrapper.sh && \
