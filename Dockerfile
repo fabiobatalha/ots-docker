@@ -25,6 +25,7 @@ RUN cd /project/deps && \
     cd -
 
 # ParsCit
+# https://github.com/knmnyn/ParsCit/blob/master/INSTALL
 RUN yum install -y perl perl-core perl-XML-Twig perl-XML-Writer ruby && \
     curl -L http://cpanmin.us | perl - App::cpanminus && \
     cpanm XML::Writer::String && \
@@ -35,14 +36,17 @@ RUN yum install -y perl perl-core perl-XML-Twig perl-XML-Writer ruby && \
 ENV CRFPP_HOME=/usr/local
 
 # Pandoc
+# https://pandoc.org/
 RUN yum install -y pandoc pandoc-citeproc ghc-pandoc-citeproc
 
 # Image Exif
+# https://sno.phy.queensu.ca/~phil/exiftool/
 RUN cd deps/Image-ExifTool-10.87 && \
     perl Makefile.PL && \
     make install
 
 # MITIE
+# About: https://github.com/mit-nlp/MITIE
 RUN yum install -y cmake libX11-devel blas-devel blas OpenBLAS && \
     cd deps/MITIE-0.5/tools/ner_stream && \
     mkdir build && \
@@ -52,9 +56,11 @@ RUN yum install -y cmake libX11-devel blas-devel blas OpenBLAS && \
     cd -
 
 # meTypeset Dependencies
+# https://github.com/MartinPaulEve/meTypeset
 RUN pip install django editdistance lxml
 
 # GROBID
+# https://github.com/kermitt2/grobid
 RUN yum install -y java-devel
 RUN cd deps && \
     wget https://github.com/kermitt2/grobid/archive/0.5.1.zip && \
@@ -64,6 +70,7 @@ RUN cd deps && \
     ./gradlew clean install
 
 # OTS dependencies
+# https://github.com/pkp/ots
 RUN yum install -y php httpd php-xsl php-mysql php-pdo python-lxml php-cli php-mcrypt php-ldap php-zip java sendmail zip unzip && \
     yum install -y libreoffice python-openoffice.noarch libreoffice-pyuno.x86_64 unoconv
 RUN cd deps/bibutils_6.2 && \
