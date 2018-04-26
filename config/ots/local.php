@@ -32,9 +32,9 @@ return array(
         'grobid' => array(
             'jre' => 'java',
             'jre_args' => '-Xmx1024m',
-            'install_path' => '/opt/grobid',
+            'install_path' => '/project/deps/grobid-0.5.1',
             'mode' => 'service', // valid values are service or batch
-            'jarfile' => '/project/deps/grobid-0.5.1/grobid-core/build/libs/grobid-core-0.5.1-onejar.jar',   // located in <install_path>/grobid-core/target/
+            'jarfile' => 'grobid-core-0.5.1-onejar.jar',   // located in <install_path>/grobid-core/target/
             'xsl' => 'module/GrobidConversion/assets/grobid-jats.xsl',
         ),
     ),
