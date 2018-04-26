@@ -67,7 +67,11 @@ RUN cd deps && \
     unzip 0.5.1.zip && \
     rm 0.5.1.zip && \
     cd grobid-0.5.1 && \
-    ./gradlew clean install
+    ./gradlew clean install && \
+
+    # For OTS compatibility
+    mkdir -p grobid-core/target && \
+    cp grobid-core/build/libs/* grobid-core/target
 
 # OTS dependencies
 # https://github.com/pkp/ots
